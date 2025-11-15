@@ -1,4 +1,6 @@
+from sentry_sdk.api import start_transaction
 import logging
+import inspect
 import os
 from functools import wraps
 from typing import Callable
@@ -62,7 +64,7 @@ def monitor[F: Callable, R, **P](
     schedule = action["on"]["schedule"][0]["cron"]
 
     def wrapper(func: F) -> F:
-        @_monitor(
+        dec = _monitor(
             monitor_slug,
             {
                 "schedule": {
@@ -71,15 +73,38 @@ def monitor[F: Callable, R, **P](
                 }
             },
         )
+
+        @dec
         @wraps(func)
-        def decorator(*args: P.args, **kwargs: P.kwargs) -> R:
-            transaction = sentry_sdk.start_transaction(
+        async def async_wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
+            with start_transaction(
                 op="task",
                 name=monitor_slug,
-            )
-            with transaction:
+            ):
+                return await func(*args, **kwargs)
+
+        try:
+            async_wrapper.__signature__ = inspect.signature(func)  # type: ignore[attr-defined]
+        except Exception:
+            pass
+
+        @dec
+        @wraps(func)
+        def sync_wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
+            with start_transaction(
+                op="task",
+                name=monitor_slug,
+            ):
                 return func(*args, **kwargs)
 
-        return decorator
+        try:
+            sync_wrapper.__signature__ = inspect.signature(func)  # type: ignore[attr-defined]
+        except Exception:
+            pass
+
+        if inspect.iscoroutinefunction(func):
+            return async_wrapper
+        else:
+            return sync_wrapper
 
     return wrapper
