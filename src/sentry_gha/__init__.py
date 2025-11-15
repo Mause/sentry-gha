@@ -23,7 +23,7 @@ logging.basicConfig(
 __all__ = ["monitor", "init"]
 
 
-def init() -> None:
+def init(spotlight: bool = False) -> None:
     github_ref_name = os.getenv("GITHUB_REF_NAME")
     if github_ref_name is None:
         environment = "development"
@@ -40,6 +40,7 @@ def init() -> None:
         enable_logs=True,
         environment=environment,
         release=os.getenv("GITHUB_SHA", "unknown"),
+        spotlight=spotlight,
     )
 
     scope = sentry_sdk.get_current_scope()
