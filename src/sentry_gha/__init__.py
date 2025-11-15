@@ -53,7 +53,9 @@ def init(spotlight: bool = False) -> None:
     )
 
 
-def monitor[F: Callable, R, **P](name: str, workflow_name: str) -> Callable[[F], F]:
+def monitor[F: Callable, R, **P](
+    monitor_slug: str, workflow_name: str
+) -> Callable[[F], F]:
     with open(f".github/workflows/{workflow_name}.yml") as fh:
         action = YAML().load(fh)
 
@@ -61,7 +63,7 @@ def monitor[F: Callable, R, **P](name: str, workflow_name: str) -> Callable[[F],
 
     def wrapper(func: F) -> F:
         @_monitor(
-            name,
+            monitor_slug,
             {
                 "schedule": {
                     "type": "crontab",
@@ -73,7 +75,7 @@ def monitor[F: Callable, R, **P](name: str, workflow_name: str) -> Callable[[F],
         def decorator(*args: P.args, **kwargs: P.kwargs) -> R:
             transaction = sentry_sdk.start_transaction(
                 op="task",
-                name=name,
+                name=monitor_slug,
             )
             with transaction:
                 return func(*args, **kwargs)
