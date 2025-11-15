@@ -1,6 +1,5 @@
-from sentry_sdk.api import start_transaction
-import logging
 import inspect
+import logging
 import os
 from functools import wraps
 from typing import Callable
@@ -9,6 +8,7 @@ import sentry_sdk
 from rich.console import Console
 from rich.logging import RichHandler
 from ruamel.yaml import YAML
+from sentry_sdk.api import start_transaction
 from sentry_sdk.crons import monitor as _monitor
 
 logging.basicConfig(
@@ -36,7 +36,9 @@ def init(spotlight: bool = False) -> None:
 
     sentry_sdk.init(
         # Add data like request headers and IP for users,
-        # see https://docs.sentry.io/platforms/python/data-management/data-collected/ for more info
+        # see
+        # https://docs.sentry.io/platforms/python/data-management/data-collected/
+        # for more info
         send_default_pii=True,
         # Enable sending logs to Sentry
         enable_logs=True,
