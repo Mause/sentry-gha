@@ -3,7 +3,7 @@ name = "sentry-gha"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.12"
 authors = [{ name = "Elliana May", email = "me@mause.me" }]
 dependencies = [
   "rich>=14.2.0",
@@ -20,4 +20,3 @@ build-backend = "uv_build"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "ANN"]
-
