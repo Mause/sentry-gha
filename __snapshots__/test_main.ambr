@@ -3,13 +3,13 @@
   list([
     list([
       dict({
-        'event_id': '6472be3ccecb48a3bddc32e63d472dd4',
-        'sent_at': '2025-11-16T05:18:54.619676Z',
+        'event_id': 'event_id',
+        'sent_at': 'sent_at',
         'trace': dict({
           'environment': 'development',
           'public_key': 'u',
           'release': 'unknown',
-          'trace_id': '80200b74aa534ad3b48c7e3d9a8e99fb',
+          'trace_id': 'trace_id',
         }),
       }),
       dict({
@@ -18,17 +18,17 @@
         'type': 'check_in',
       }),
       dict({
-        'check_in_id': '8cdf778dda3549e28937b89f1075046b',
+        'check_in_id': 'check_in_id',
         'contexts': dict({
           'trace': dict({
             'parent_span_id': None,
-            'span_id': 'b05ea0ad268a7470',
-            'trace_id': '80200b74aa534ad3b48c7e3d9a8e99fb',
+            'span_id': 'span_id',
+            'trace_id': 'trace_id',
           }),
         }),
-        'duration': None,
+        'duration': 'duration',
         'environment': 'development',
-        'event_id': '6472be3ccecb48a3bddc32e63d472dd4',
+        'event_id': 'event_id',
         'monitor_config': dict({
           'schedule': dict({
             'type': 'crontab',
@@ -60,19 +60,19 @@
         }),
         'server_name': 'localhost',
         'status': 'in_progress',
-        'timestamp': '2025-11-16T05:18:54.619024Z',
+        'timestamp': 'timestamp',
         'type': 'check_in',
       }),
     ]),
     list([
       dict({
-        'event_id': '74ee86a6f91449ce947d27ef696c2504',
-        'sent_at': '2025-11-16T05:18:54.620183Z',
+        'event_id': 'event_id',
+        'sent_at': 'sent_at',
         'trace': dict({
           'environment': 'development',
           'public_key': 'u',
           'release': 'unknown',
-          'trace_id': '80200b74aa534ad3b48c7e3d9a8e99fb',
+          'trace_id': 'trace_id',
         }),
       }),
       dict({
@@ -81,17 +81,17 @@
         'type': 'check_in',
       }),
       dict({
-        'check_in_id': '8cdf778dda3549e28937b89f1075046b',
+        'check_in_id': 'check_in_id',
         'contexts': dict({
           'trace': dict({
             'parent_span_id': None,
-            'span_id': 'b05ea0ad268a7470',
-            'trace_id': '80200b74aa534ad3b48c7e3d9a8e99fb',
+            'span_id': 'span_id',
+            'trace_id': 'trace_id',
           }),
         }),
-        'duration': 0.0009828699985519052,
+        'duration': 'duration',
         'environment': 'development',
-        'event_id': '74ee86a6f91449ce947d27ef696c2504',
+        'event_id': 'event_id',
         'monitor_config': dict({
           'schedule': dict({
             'type': 'crontab',
@@ -123,7 +123,7 @@
         }),
         'server_name': 'localhost',
         'status': 'ok',
-        'timestamp': '2025-11-16T05:18:54.619954Z',
+        'timestamp': 'timestamp',
         'type': 'check_in',
       }),
     ]),
