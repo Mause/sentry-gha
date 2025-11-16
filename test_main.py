@@ -3,7 +3,7 @@ from io import StringIO
 from typing import Callable
 from unittest.mock import patch
 
-from pytest import MonkeyPatch
+from pytest import MonkeyPatch, warns
 from ruamel.yaml import YAML
 from sentry_sdk.api import get_client
 from sentry_sdk.envelope import Envelope
@@ -13,10 +13,19 @@ from syrupy.session import SnapshotSession
 from sentry_gha import init, monitor
 
 
-def make_subject() -> Callable[[int, int], int]:
-    @monitor("sentry_gha-w4", "python-app")
-    def my_function(x: int, y: int) -> int:
-        return x + y
+def make_subject(cron: str) -> Callable[[int, int], int]:
+    fh = StringIO()
+    YAML().dump(
+        {"on": {"schedule": [{"cron": cron}]}},
+        fh,
+    )
+    fh.seek(0)
+
+    with patch("builtins.open", return_value=fh):
+
+        @monitor("sentry_gha-w4", "python-app")
+        def my_function(x: int, y: int) -> int:
+            return x + y
 
     return my_function
 
@@ -30,17 +39,15 @@ class DummyTransport(Transport):
         self.envelopes.append(envelope)
 
 
+def test_warning() -> None:
+    with warns(UserWarning, match="on the hour"):
+        make_subject("* * * * *")
+
+
 def test_monitor(monkeypatch: MonkeyPatch, snapshot: SnapshotSession) -> None:
-    fh = StringIO()
-    YAML().dump(
-        {"on": {"schedule": [{"cron": "10-55/5 * * * *"}]}},
-        fh,
-    )
-    fh.seek(0)
     monkeypatch.setenv("SENTRY_DSN", "http://u:u@example.com/123")
 
-    with patch("builtins.open", return_value=fh):
-        my_function = make_subject()
+    my_function = make_subject("10-55/5 * * * *")
 
     transport = DummyTransport()
     init(transport=transport)

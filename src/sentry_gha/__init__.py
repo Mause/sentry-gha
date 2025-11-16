@@ -1,6 +1,7 @@
 import inspect
 import logging
 import os
+import warnings
 from datetime import timedelta
 from functools import wraps
 from typing import Callable
@@ -74,7 +75,7 @@ def get_cron_schedule(workflow_name: str) -> str:
     minute = parsed.parts[0]
     assert minute.unit["name"] == "minute"
     if minute.has(0):
-        raise ValueError(f"GitHub recommends that jobs not run on the hour: {schedule}")
+        warnings.warn(f"GitHub recommends that jobs not run on the hour: {schedule}")
 
     return schedule
 
