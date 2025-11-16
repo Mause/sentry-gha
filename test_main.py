@@ -36,7 +36,7 @@ def test_monitor(monkeypatch: MonkeyPatch, snapshot: SnapshotSession) -> None:
         {
             "on": {
                 "schedule": [
-                    {"cron": "0 0 * * *", "timezone": "UTC"},
+                    {"cron": "*/5 * * * *", "timezone": "UTC"},
                 ]
             }
         },
