@@ -1,6 +1,7 @@
 import json
+from contextlib import contextmanager
 from io import StringIO
-from typing import Callable
+from typing import Callable, Generator
 from unittest.mock import patch
 
 from pytest import MonkeyPatch, warns
@@ -49,20 +50,26 @@ def test_monitor(monkeypatch: MonkeyPatch, snapshot: SnapshotSession) -> None:
 
     my_function = make_subject("10-55/5 * * * *")
 
+    with catch(monkeypatch) as datum:
+        assert my_function(2, 3) == 5
+
+    assert snapshot == wipe(datum)
+
+
+@contextmanager
+def catch(monkeypatch: MonkeyPatch) -> Generator[list, None, None]:
+    monkeypatch.setenv("SENTRY_DSN", "http://u:u@example.com/123")
     transport = DummyTransport()
     init(transport=transport)
 
-    client = get_client()
+    datum = []
+    with get_client():
+        yield datum
 
-    with client:
-        result = my_function(2, 3)
-        assert result == 5
-
-    datum = [
+    datum.extend(
         [json.loads(item) for item in e.serialize().splitlines()]
         for e in transport.envelopes
-    ]
-    assert snapshot == wipe(datum)
+    )
 
 
 def wipe(data: list | dict | str | int | None) -> list | dict | str | int | None:
