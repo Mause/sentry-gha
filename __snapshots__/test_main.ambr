@@ -1,4 +1,227 @@
 # serializer version: 1
+# name: test_error
+  list([
+    list([
+      dict({
+        'event_id': '<redacted-id>',
+        'sent_at': '<redacted-timestamp>',
+        'trace': dict({
+          'environment': 'environment',
+          'public_key': 'u',
+          'release': 'release',
+          'sample_rate': '1.0',
+          'trace_id': '<redacted-id>',
+        }),
+      }),
+      dict({
+        'content_type': 'application/json',
+        'length': 0,
+        'type': 'check_in',
+      }),
+      dict({
+        'check_in_id': '<redacted-id>',
+        'contexts': dict({
+          'trace': dict({
+            'parent_span_id': None,
+            'span_id': '<redacted-id>',
+            'trace_id': '<redacted-id>',
+          }),
+        }),
+        'duration': 'duration',
+        'environment': 'environment',
+        'event_id': '<redacted-id>',
+        'monitor_config': dict({
+          'checkin_margin': 10.0,
+          'max_runtime': 5.0,
+          'schedule': dict({
+            'type': 'crontab',
+            'value': '10-55/5 * * * *',
+          }),
+          'timezone': 'Australia/Perth',
+        }),
+        'monitor_slug': 'sentry_gha-w4',
+        'platform': 'python',
+        'release': 'release',
+        'sdk': dict({
+          'integrations': list([
+            'argv',
+            'atexit',
+            'dedupe',
+            'excepthook',
+            'logging',
+            'modules',
+            'stdlib',
+            'threading',
+          ]),
+          'name': 'sentry.python',
+          'packages': list([
+            dict({
+              'name': 'pypi:sentry-sdk',
+              'version': 'version',
+            }),
+          ]),
+          'version': 'version',
+        }),
+        'server_name': 'server_name',
+        'status': 'in_progress',
+        'timestamp': '<redacted-timestamp>',
+        'type': 'check_in',
+      }),
+    ]),
+    list([
+      dict({
+        'event_id': '<redacted-id>',
+        'sent_at': '<redacted-timestamp>',
+        'trace': dict({
+          'environment': 'environment',
+          'public_key': 'u',
+          'release': 'release',
+          'sample_rand': 'sample_rand',
+          'sample_rate': '1.0',
+          'sampled': 'true',
+          'trace_id': '<redacted-id>',
+          'transaction': 'test_main.make_subject.<locals>.my_function',
+        }),
+      }),
+      dict({
+        'content_type': 'application/json',
+        'length': 0,
+        'type': 'transaction',
+      }),
+      dict({
+        'contexts': dict({
+          'runtime': dict({
+            'build': 'build',
+            'name': 'CPython',
+            'version': 'version',
+          }),
+          'trace': dict({
+            'data': dict({
+              'thread.id': 'thread.id',
+              'thread.name': 'MainThread',
+            }),
+            'description': None,
+            'op': 'task',
+            'origin': 'manual',
+            'parent_span_id': None,
+            'span_id': '<redacted-id>',
+            'status': 'internal_error',
+            'trace_id': '<redacted-id>',
+          }),
+        }),
+        'environment': 'environment',
+        'event_id': '<redacted-id>',
+        'extra': dict({
+          'sys.argv': 'sys.argv',
+        }),
+        'measurements': dict({
+        }),
+        'platform': 'python',
+        'release': 'release',
+        'sdk': dict({
+          'integrations': list([
+            'argv',
+            'atexit',
+            'dedupe',
+            'excepthook',
+            'logging',
+            'modules',
+            'stdlib',
+            'threading',
+          ]),
+          'name': 'sentry.python',
+          'packages': list([
+            dict({
+              'name': 'pypi:sentry-sdk',
+              'version': 'version',
+            }),
+          ]),
+          'version': 'version',
+        }),
+        'server_name': 'server_name',
+        'spans': list([
+        ]),
+        'start_timestamp': '<redacted-timestamp>',
+        'tags': dict({
+          'GITHUB_REF_NAME': 'GITHUB_REF_NAME',
+        }),
+        'timestamp': '<redacted-timestamp>',
+        'transaction': 'test_main.make_subject.<locals>.my_function',
+        'transaction_info': dict({
+          'source': 'custom',
+        }),
+        'type': 'transaction',
+      }),
+    ]),
+    list([
+      dict({
+        'event_id': '<redacted-id>',
+        'sent_at': '<redacted-timestamp>',
+        'trace': dict({
+          'environment': 'environment',
+          'public_key': 'u',
+          'release': 'release',
+          'sample_rate': '1.0',
+          'trace_id': '<redacted-id>',
+        }),
+      }),
+      dict({
+        'content_type': 'application/json',
+        'length': 0,
+        'type': 'check_in',
+      }),
+      dict({
+        'check_in_id': '<redacted-id>',
+        'contexts': dict({
+          'trace': dict({
+            'parent_span_id': None,
+            'span_id': '<redacted-id>',
+            'trace_id': '<redacted-id>',
+          }),
+        }),
+        'duration': 0.0,
+        'environment': 'environment',
+        'event_id': '<redacted-id>',
+        'monitor_config': dict({
+          'checkin_margin': 10.0,
+          'max_runtime': 5.0,
+          'schedule': dict({
+            'type': 'crontab',
+            'value': '10-55/5 * * * *',
+          }),
+          'timezone': 'Australia/Perth',
+        }),
+        'monitor_slug': 'sentry_gha-w4',
+        'platform': 'python',
+        'release': 'release',
+        'sdk': dict({
+          'integrations': list([
+            'argv',
+            'atexit',
+            'dedupe',
+            'excepthook',
+            'logging',
+            'modules',
+            'stdlib',
+            'threading',
+          ]),
+          'name': 'sentry.python',
+          'packages': list([
+            dict({
+              'name': 'pypi:sentry-sdk',
+              'version': 'version',
+            }),
+          ]),
+          'version': 'version',
+        }),
+        'server_name': 'server_name',
+        'status': 'error',
+        'timestamp': '<redacted-timestamp>',
+        'type': 'check_in',
+      }),
+    ]),
+  ])
+# ---
 # name: test_monitor
   list([
     list([

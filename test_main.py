@@ -4,7 +4,7 @@ from io import StringIO
 from typing import Callable, Generator
 from unittest.mock import patch
 
-from pytest import MonkeyPatch, warns
+from pytest import MonkeyPatch, raises, warns
 from ruamel.yaml import YAML
 from sentry_sdk.api import get_client
 from sentry_sdk.envelope import Envelope
@@ -50,6 +50,15 @@ def test_monitor(monkeypatch: MonkeyPatch, snapshot: SnapshotSession) -> None:
 
     with catch(monkeypatch) as datum:
         assert my_function(10, 2) == 5
+
+    assert snapshot == wipe(datum)
+
+
+def test_error(monkeypatch: MonkeyPatch, snapshot: SnapshotSession) -> None:
+    my_function = make_subject("10-55/5 * * * *")
+
+    with catch(monkeypatch) as datum, raises(ZeroDivisionError):
+        assert my_function(4, 0) == 5
 
     assert snapshot == wipe(datum)
 
