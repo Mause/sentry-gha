@@ -46,6 +46,7 @@ def init(spotlight: bool = False, transport: Transport | None = None) -> None:
         enable_logs=True,
         environment=environment,
         release=os.getenv("GITHUB_SHA", "unknown"),
+        traces_sample_rate=1.0,
         spotlight=spotlight,
         transport=transport,
     )
