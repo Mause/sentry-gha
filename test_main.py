@@ -33,13 +33,7 @@ class DummyTransport(Transport):
 def test_monitor(monkeypatch: MonkeyPatch, snapshot: SnapshotSession) -> None:
     fh = StringIO()
     YAML().dump(
-        {
-            "on": {
-                "schedule": [
-                    {"cron": "*/5 * * * *", "timezone": "UTC"},
-                ]
-            }
-        },
+        {"on": {"schedule": [{"cron": "10-55/5 * * * *"}]}},
         fh,
     )
     fh.seek(0)
