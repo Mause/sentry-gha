@@ -6,16 +6,16 @@
         'event_id': 'event_id',
         'sent_at': 'sent_at',
         'trace': dict({
-          'environment': 'development',
+          'environment': 'environment',
           'public_key': 'u',
-          'release': 'unknown',
+          'release': 'release',
           'sample_rate': '1.0',
           'trace_id': 'trace_id',
         }),
       }),
       dict({
         'content_type': 'application/json',
-        'length': 716,
+        'length': 'length',
         'type': 'check_in',
       }),
       dict({
@@ -28,7 +28,7 @@
           }),
         }),
         'duration': 'duration',
-        'environment': 'development',
+        'environment': 'environment',
         'event_id': 'event_id',
         'monitor_config': dict({
           'schedule': dict({
@@ -38,7 +38,7 @@
         }),
         'monitor_slug': 'sentry_gha-w4',
         'platform': 'python',
-        'release': 'unknown',
+        'release': 'release',
         'sdk': dict({
           'integrations': list([
             'argv',
@@ -54,12 +54,12 @@
           'packages': list([
             dict({
               'name': 'pypi:sentry-sdk',
-              'version': '2.44.0',
+              'version': 'version',
             }),
           ]),
-          'version': '2.44.0',
+          'version': 'version',
         }),
-        'server_name': 'localhost',
+        'server_name': 'server_name',
         'status': 'in_progress',
         'timestamp': 'timestamp',
         'type': 'check_in',
@@ -70,10 +70,10 @@
         'event_id': 'event_id',
         'sent_at': 'sent_at',
         'trace': dict({
-          'environment': 'development',
+          'environment': 'environment',
           'public_key': 'u',
-          'release': 'unknown',
-          'sample_rand': '0.864882',
+          'release': 'release',
+          'sample_rand': 'sample_rand',
           'sample_rate': '1.0',
           'sampled': 'true',
           'trace_id': 'trace_id',
@@ -82,19 +82,19 @@
       }),
       dict({
         'content_type': 'application/json',
-        'length': 1133,
+        'length': 'length',
         'type': 'transaction',
       }),
       dict({
         'contexts': dict({
           'runtime': dict({
-            'build': '3.12.12 (main, Oct 18 2025, 05:45:20) [Clang 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4',
+            'build': 'build',
             'name': 'CPython',
-            'version': '3.12.12',
+            'version': 'version',
           }),
           'trace': dict({
             'data': dict({
-              'thread.id': '487340552336',
+              'thread.id': 'thread.id',
               'thread.name': 'MainThread',
             }),
             'description': None,
@@ -105,18 +105,15 @@
             'trace_id': 'trace_id',
           }),
         }),
-        'environment': 'development',
+        'environment': 'environment',
         'event_id': 'event_id',
         'extra': dict({
-          'sys.argv': list([
-            '/data/data/com.termux/files/home/sentry-gha/.venv/bin/pytest',
-            '--snapshot-update',
-          ]),
+          'sys.argv': 'sys.argv',
         }),
         'measurements': dict({
         }),
         'platform': 'python',
-        'release': 'unknown',
+        'release': 'release',
         'sdk': dict({
           'integrations': list([
             'argv',
@@ -132,17 +129,17 @@
           'packages': list([
             dict({
               'name': 'pypi:sentry-sdk',
-              'version': '2.44.0',
+              'version': 'version',
             }),
           ]),
-          'version': '2.44.0',
+          'version': 'version',
         }),
-        'server_name': 'localhost',
+        'server_name': 'server_name',
         'spans': list([
         ]),
-        'start_timestamp': '2025-11-16T06:25:21.831983Z',
+        'start_timestamp': 'start_timestamp',
         'tags': dict({
-          'GITHUB_REF_NAME': None,
+          'GITHUB_REF_NAME': 'GITHUB_REF_NAME',
         }),
         'timestamp': 'timestamp',
         'transaction': 'test_main.make_subject.<locals>.my_function',
@@ -157,16 +154,16 @@
         'event_id': 'event_id',
         'sent_at': 'sent_at',
         'trace': dict({
-          'environment': 'development',
+          'environment': 'environment',
           'public_key': 'u',
-          'release': 'unknown',
+          'release': 'release',
           'sample_rate': '1.0',
           'trace_id': 'trace_id',
         }),
       }),
       dict({
         'content_type': 'application/json',
-        'length': 724,
+        'length': 'length',
         'type': 'check_in',
       }),
       dict({
@@ -179,7 +176,7 @@
           }),
         }),
         'duration': 'duration',
-        'environment': 'development',
+        'environment': 'environment',
         'event_id': 'event_id',
         'monitor_config': dict({
           'schedule': dict({
@@ -189,7 +186,7 @@
         }),
         'monitor_slug': 'sentry_gha-w4',
         'platform': 'python',
-        'release': 'unknown',
+        'release': 'release',
         'sdk': dict({
           'integrations': list([
             'argv',
@@ -205,12 +202,12 @@
           'packages': list([
             dict({
               'name': 'pypi:sentry-sdk',
-              'version': '2.44.0',
+              'version': 'version',
             }),
           ]),
-          'version': '2.44.0',
+          'version': 'version',
         }),
-        'server_name': 'localhost',
+        'server_name': 'server_name',
         'status': 'ok',
         'timestamp': 'timestamp',
         'type': 'check_in',

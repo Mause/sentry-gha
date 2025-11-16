@@ -64,6 +64,17 @@ def wipe(data: list | dict | str | int | None) -> list | dict | str | int | None
                 "timestamp",
                 "sent_at",
                 "duration",
+                "thread.id",
+                "server_name",
+                "sample_rand",
+                "environment",
+                "release",
+                "start_timestamp",
+                "length",
+                "build",
+                "sys.argv",
+                "version",
+                "GITHUB_REF_NAME",
             ):
                 new[key] = key
             else:
