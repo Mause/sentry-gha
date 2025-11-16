@@ -26,7 +26,7 @@ def make_subject(cron: str) -> Callable[[int, int], int]:
 
         @monitor("sentry_gha-w4", "python-app")
         def my_function(x: int, y: int) -> int:
-            return x + y
+            return x // y
 
     return my_function
 
@@ -46,12 +46,10 @@ def test_warning() -> None:
 
 
 def test_monitor(monkeypatch: MonkeyPatch, snapshot: SnapshotSession) -> None:
-    monkeypatch.setenv("SENTRY_DSN", "http://u:u@example.com/123")
-
     my_function = make_subject("10-55/5 * * * *")
 
     with catch(monkeypatch) as datum:
-        assert my_function(2, 3) == 5
+        assert my_function(10, 2) == 5
 
     assert snapshot == wipe(datum)
 
