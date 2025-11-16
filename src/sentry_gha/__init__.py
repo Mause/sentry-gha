@@ -10,6 +10,7 @@ from rich.logging import RichHandler
 from ruamel.yaml import YAML
 from sentry_sdk.api import start_transaction
 from sentry_sdk.crons import monitor as _monitor
+from sentry_sdk.utils import qualname_from_function
 
 logging.basicConfig(
     level=logging.INFO,
@@ -75,13 +76,14 @@ def monitor[F: Callable, R, **P](
                 }
             },
         )
+        function_name = qualname_from_function(func) or ""
 
         @dec
         @wraps(func)
         async def async_wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
             with start_transaction(
                 op="task",
-                name=monitor_slug,
+                name=function_name,
             ):
                 return await func(*args, **kwargs)
 
@@ -95,7 +97,7 @@ def monitor[F: Callable, R, **P](
         def sync_wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
             with start_transaction(
                 op="task",
-                name=monitor_slug,
+                name=function_name,
             ):
                 return func(*args, **kwargs)
 
