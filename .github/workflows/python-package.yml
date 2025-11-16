@@ -28,7 +28,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - uses: astral-sh/setup-uv@v7
       - name: Install dependencies
-        run: uv sync --locked
-      - run: uvx ruff check
-      - run: uvx ty check
+        run: uv sync --locked --all-groups
+      - run: uv run ruff check
+      - run: uv run ty check
     # - run: uv run pytest

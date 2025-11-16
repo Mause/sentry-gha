@@ -11,9 +11,13 @@ dependencies = [
   "sentry-sdk>=2.44.0",
 ]
 
+[dependency-groups]
+ruff = ["ruff", "ty"]
+
 [build-system]
 requires = ["uv_build>=0.9.9,<0.10.0"]
 build-backend = "uv_build"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "ANN"]
+
