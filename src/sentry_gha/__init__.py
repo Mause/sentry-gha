@@ -10,6 +10,7 @@ from rich.logging import RichHandler
 from ruamel.yaml import YAML
 from sentry_sdk.api import start_transaction
 from sentry_sdk.crons import monitor as _monitor
+from sentry_sdk.transport import Transport
 from sentry_sdk.utils import qualname_from_function
 
 logging.basicConfig(
@@ -26,7 +27,7 @@ logging.basicConfig(
 __all__ = ["monitor", "init"]
 
 
-def init(spotlight: bool = False) -> None:
+def init(spotlight: bool = False, transport: Transport | None = None) -> None:
     github_ref_name = os.getenv("GITHUB_REF_NAME")
     if github_ref_name is None:
         environment = "development"
@@ -45,7 +46,9 @@ def init(spotlight: bool = False) -> None:
         enable_logs=True,
         environment=environment,
         release=os.getenv("GITHUB_SHA", "unknown"),
+        traces_sample_rate=1.0,
         spotlight=spotlight,
+        transport=transport,
     )
 
     scope = sentry_sdk.get_current_scope()
@@ -58,13 +61,19 @@ def init(spotlight: bool = False) -> None:
     )
 
 
-def monitor[F: Callable, R, **P](
-    monitor_slug: str, workflow_name: str
-) -> Callable[[F], F]:
+def get_cron_schedule(workflow_name: str) -> str:
     with open(f".github/workflows/{workflow_name}.yml") as fh:
         action = YAML().load(fh)
 
     schedule = action["on"]["schedule"][0]["cron"]
+
+    return schedule
+
+
+def monitor[F: Callable, R, **P](
+    monitor_slug: str, workflow_name: str
+) -> Callable[[F], F]:
+    schedule = get_cron_schedule(workflow_name)
 
     def wrapper(func: F) -> F:
         dec = _monitor(
