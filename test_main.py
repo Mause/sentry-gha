@@ -92,6 +92,7 @@ def wipe(data: list | dict | str | int | None) -> list | dict | str | int | None
                 "trace_id",
                 "check_in_id",
                 "span_id",
+                "parent_span_id",
             }:
                 new[key] = "<redacted-id>"
             elif key in (
