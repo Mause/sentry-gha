@@ -1,13 +1,15 @@
 import json
+from io import StringIO
 from typing import Callable
+from unittest.mock import patch
 
 from pytest import MonkeyPatch
+from ruamel.yaml import YAML
 from sentry_sdk.api import get_client
 from sentry_sdk.envelope import Envelope
 from sentry_sdk.transport import Transport
 from syrupy.session import SnapshotSession
 
-import sentry_gha
 from sentry_gha import init, monitor
 
 
@@ -29,10 +31,22 @@ class DummyTransport(Transport):
 
 
 def test_monitor(monkeypatch: MonkeyPatch, snapshot: SnapshotSession) -> None:
-    monkeypatch.setattr(sentry_gha, "get_cron_schedule", lambda wn: "*/5 * * * *")
+    fh = StringIO()
+    YAML().dump(
+        {
+            "on": {
+                "schedule": [
+                    {"cron": "*/5 * * * *", "timezone": "UTC"},
+                ]
+            }
+        },
+        fh,
+    )
+    fh.seek(0)
     monkeypatch.setenv("SENTRY_DSN", "http://u:u@example.com/123")
 
-    my_function = make_subject()
+    with patch("builtins.open", return_value=fh):
+        my_function = make_subject()
 
     transport = DummyTransport()
     init(transport=transport)
