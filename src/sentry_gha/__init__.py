@@ -6,6 +6,7 @@ from functools import wraps
 from typing import Callable
 
 import sentry_sdk
+from cron_converter import Cron
 from rich.console import Console
 from rich.logging import RichHandler
 from ruamel.yaml import YAML
@@ -63,13 +64,16 @@ def init(spotlight: bool = False, transport: Transport | None = None) -> None:
     )
 
 
-def get_cron_schedule(workflow_name: str) -> str:
+def get_cron_schedule(workflow_name: str) -> timedelta:
     with open(f".github/workflows/{workflow_name}.yml") as fh:
         action = YAML().load(fh)
 
     schedule = action["on"]["schedule"][0]["cron"]
 
-    return schedule
+    sched = Cron(schedule).schedule()
+    a = sched.next()
+    b = sched.next()
+    return b - a
 
 
 FIVE_MINUTES = timedelta(minutes=5).total_seconds() / 60.0
@@ -84,8 +88,9 @@ def monitor[F: Callable, R, **P](
     def wrapper(func: F) -> F:
         m: MonitorConfig = {
             "schedule": {
-                "type": "crontab",
-                "value": schedule,
+                "type": "interval",
+                "unit": "seconds",
+                "value": int(schedule.total_seconds()),
             },
             "max_runtime": FIVE_MINUTES,
             "checkin_margin": TEN_MINUTES,
