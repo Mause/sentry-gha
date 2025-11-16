@@ -105,7 +105,6 @@
             'origin': 'manual',
             'parent_span_id': None,
             'span_id': '<redacted-id>',
-            'status': 'internal_error',
             'trace_id': '<redacted-id>',
           }),
         }),
@@ -140,6 +139,21 @@
         }),
         'server_name': 'server_name',
         'spans': list([
+          dict({
+            'data': dict({
+              'thread.id': 'thread.id',
+              'thread.name': 'MainThread',
+            }),
+            'description': 'test_main.make_subject.<locals>.my_function',
+            'op': 'function',
+            'origin': 'manual',
+            'parent_span_id': '87f4ae6c2843a6f7',
+            'same_process_as_parent': True,
+            'span_id': '<redacted-id>',
+            'start_timestamp': '<redacted-timestamp>',
+            'timestamp': '<redacted-timestamp>',
+            'trace_id': '<redacted-id>',
+          }),
         ]),
         'start_timestamp': '<redacted-timestamp>',
         'tags': dict({
@@ -215,7 +229,7 @@
           'version': 'version',
         }),
         'server_name': 'server_name',
-        'status': 'error',
+        'status': 'ok',
         'timestamp': '<redacted-timestamp>',
         'type': 'check_in',
       }),
@@ -362,6 +376,21 @@
         }),
         'server_name': 'server_name',
         'spans': list([
+          dict({
+            'data': dict({
+              'thread.id': 'thread.id',
+              'thread.name': 'MainThread',
+            }),
+            'description': 'test_main.make_subject.<locals>.my_function',
+            'op': 'function',
+            'origin': 'manual',
+            'parent_span_id': '9e0f9bdb9f7dfb53',
+            'same_process_as_parent': True,
+            'span_id': '<redacted-id>',
+            'start_timestamp': '<redacted-timestamp>',
+            'timestamp': '<redacted-timestamp>',
+            'trace_id': '<redacted-id>',
+          }),
         ]),
         'start_timestamp': '<redacted-timestamp>',
         'tags': dict({
