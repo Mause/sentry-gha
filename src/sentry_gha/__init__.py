@@ -72,6 +72,10 @@ def get_cron_schedule(workflow_name: str) -> str:
     return schedule
 
 
+FIVE_MINUTES = timedelta(minutes=5).total_seconds() / 60.0
+TEN_MINUTES = timedelta(minutes=10).total_seconds() / 60.0
+
+
 def monitor[F: Callable, R, **P](
     monitor_slug: str, workflow_name: str
 ) -> Callable[[F], F]:
@@ -83,8 +87,8 @@ def monitor[F: Callable, R, **P](
                 "type": "crontab",
                 "value": schedule,
             },
-            "max_runtime": timedelta(minutes=5).total_seconds(),
-            "checkin_margin": timedelta(minutes=10).total_seconds(),
+            "max_runtime": FIVE_MINUTES,
+            "checkin_margin": TEN_MINUTES,
             "timezone": "Australia/Perth",
         }
         dec = _monitor(

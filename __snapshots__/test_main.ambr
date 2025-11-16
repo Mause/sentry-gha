@@ -31,8 +31,8 @@
         'environment': 'environment',
         'event_id': '<redacted-id>',
         'monitor_config': dict({
-          'checkin_margin': 600.0,
-          'max_runtime': 300.0,
+          'checkin_margin': 10.0,
+          'max_runtime': 5.0,
           'schedule': dict({
             'type': 'crontab',
             'value': '*/5 * * * *',
@@ -182,8 +182,8 @@
         'environment': 'environment',
         'event_id': '<redacted-id>',
         'monitor_config': dict({
-          'checkin_margin': 600.0,
-          'max_runtime': 300.0,
+          'checkin_margin': 10.0,
+          'max_runtime': 5.0,
           'schedule': dict({
             'type': 'crontab',
             'value': '*/5 * * * *',
