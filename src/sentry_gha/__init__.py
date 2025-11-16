@@ -82,6 +82,7 @@ def get_cron_schedule(workflow_name: str) -> str:
 
 FIVE_MINUTES = timedelta(minutes=5).total_seconds() / 60.0
 TEN_MINUTES = timedelta(minutes=10).total_seconds() / 60.0
+OPERATION = "function"
 
 
 def monitor[F: Callable, R, **P](
@@ -109,7 +110,7 @@ def monitor[F: Callable, R, **P](
         @wraps(func)
         async def async_wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
             with start_transaction(
-                op="task",
+                op=OPERATION,
                 name=function_name,
             ):
                 return await trace(func)(*args, **kwargs)
@@ -123,7 +124,7 @@ def monitor[F: Callable, R, **P](
         @wraps(func)
         def sync_wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
             with start_transaction(
-                op="task",
+                op=OPERATION,
                 name=function_name,
             ):
                 return trace(func)(*args, **kwargs)
