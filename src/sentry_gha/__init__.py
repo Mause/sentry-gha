@@ -1,11 +1,13 @@
 import inspect
 import logging
 import os
+import warnings
 from datetime import timedelta
 from functools import wraps
 from typing import Callable
 
 import sentry_sdk
+from cron_converter import Cron
 from rich.console import Console
 from rich.logging import RichHandler
 from ruamel.yaml import YAML
@@ -68,6 +70,12 @@ def get_cron_schedule(workflow_name: str) -> str:
         action = YAML().load(fh)
 
     schedule = action["on"]["schedule"][0]["cron"]
+
+    parsed = Cron(schedule)
+    minute = parsed.parts[0]
+    assert minute.unit["name"] == "minute"
+    if minute.has(0):
+        warnings.warn(f"GitHub recommends that jobs not run on the hour: {schedule}")
 
     return schedule
 

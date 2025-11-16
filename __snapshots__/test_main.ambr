@@ -35,7 +35,7 @@
           'max_runtime': 5.0,
           'schedule': dict({
             'type': 'crontab',
-            'value': '*/5 * * * *',
+            'value': '10-55/5 * * * *',
           }),
           'timezone': 'Australia/Perth',
         }),
@@ -186,7 +186,7 @@
           'max_runtime': 5.0,
           'schedule': dict({
             'type': 'crontab',
-            'value': '*/5 * * * *',
+            'value': '10-55/5 * * * *',
           }),
           'timezone': 'Australia/Perth',
         }),
