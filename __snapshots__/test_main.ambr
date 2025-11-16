@@ -1,0 +1,131 @@
+# serializer version: 1
+# name: test_monitor
+  list([
+    list([
+      dict({
+        'event_id': '6472be3ccecb48a3bddc32e63d472dd4',
+        'sent_at': '2025-11-16T05:18:54.619676Z',
+        'trace': dict({
+          'environment': 'development',
+          'public_key': 'u',
+          'release': 'unknown',
+          'trace_id': '80200b74aa534ad3b48c7e3d9a8e99fb',
+        }),
+      }),
+      dict({
+        'content_type': 'application/json',
+        'length': 716,
+        'type': 'check_in',
+      }),
+      dict({
+        'check_in_id': '8cdf778dda3549e28937b89f1075046b',
+        'contexts': dict({
+          'trace': dict({
+            'parent_span_id': None,
+            'span_id': 'b05ea0ad268a7470',
+            'trace_id': '80200b74aa534ad3b48c7e3d9a8e99fb',
+          }),
+        }),
+        'duration': None,
+        'environment': 'development',
+        'event_id': '6472be3ccecb48a3bddc32e63d472dd4',
+        'monitor_config': dict({
+          'schedule': dict({
+            'type': 'crontab',
+            'value': '*/5 * * * *',
+          }),
+        }),
+        'monitor_slug': 'sentry_gha-w4',
+        'platform': 'python',
+        'release': 'unknown',
+        'sdk': dict({
+          'integrations': list([
+            'argv',
+            'atexit',
+            'dedupe',
+            'excepthook',
+            'logging',
+            'modules',
+            'stdlib',
+            'threading',
+          ]),
+          'name': 'sentry.python',
+          'packages': list([
+            dict({
+              'name': 'pypi:sentry-sdk',
+              'version': '2.44.0',
+            }),
+          ]),
+          'version': '2.44.0',
+        }),
+        'server_name': 'localhost',
+        'status': 'in_progress',
+        'timestamp': '2025-11-16T05:18:54.619024Z',
+        'type': 'check_in',
+      }),
+    ]),
+    list([
+      dict({
+        'event_id': '74ee86a6f91449ce947d27ef696c2504',
+        'sent_at': '2025-11-16T05:18:54.620183Z',
+        'trace': dict({
+          'environment': 'development',
+          'public_key': 'u',
+          'release': 'unknown',
+          'trace_id': '80200b74aa534ad3b48c7e3d9a8e99fb',
+        }),
+      }),
+      dict({
+        'content_type': 'application/json',
+        'length': 724,
+        'type': 'check_in',
+      }),
+      dict({
+        'check_in_id': '8cdf778dda3549e28937b89f1075046b',
+        'contexts': dict({
+          'trace': dict({
+            'parent_span_id': None,
+            'span_id': 'b05ea0ad268a7470',
+            'trace_id': '80200b74aa534ad3b48c7e3d9a8e99fb',
+          }),
+        }),
+        'duration': 0.0009828699985519052,
+        'environment': 'development',
+        'event_id': '74ee86a6f91449ce947d27ef696c2504',
+        'monitor_config': dict({
+          'schedule': dict({
+            'type': 'crontab',
+            'value': '*/5 * * * *',
+          }),
+        }),
+        'monitor_slug': 'sentry_gha-w4',
+        'platform': 'python',
+        'release': 'unknown',
+        'sdk': dict({
+          'integrations': list([
+            'argv',
+            'atexit',
+            'dedupe',
+            'excepthook',
+            'logging',
+            'modules',
+            'stdlib',
+            'threading',
+          ]),
+          'name': 'sentry.python',
+          'packages': list([
+            dict({
+              'name': 'pypi:sentry-sdk',
+              'version': '2.44.0',
+            }),
+          ]),
+          'version': '2.44.0',
+        }),
+        'server_name': 'localhost',
+        'status': 'ok',
+        'timestamp': '2025-11-16T05:18:54.619954Z',
+        'type': 'check_in',
+      }),
+    ]),
+  ])
+# ---

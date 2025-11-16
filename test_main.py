@@ -1,9 +1,11 @@
 from typing import Callable
+import json
 
 from pytest import MonkeyPatch
 from sentry_sdk.api import get_client
 from sentry_sdk.envelope import Envelope
 from sentry_sdk.transport import Transport
+from syrupy.session import SnapshotSession
 
 import sentry_gha
 from sentry_gha import init, monitor
@@ -26,7 +28,7 @@ class DummyTransport(Transport):
         self.envelopes.append(envelope)
 
 
-def test_monitor(monkeypatch: MonkeyPatch) -> None:
+def test_monitor(monkeypatch: MonkeyPatch, snapshot: SnapshotSession) -> None:
     monkeypatch.setattr(sentry_gha, "get_cron_schedule", lambda wn: "*/5 * * * *")
     monkeypatch.setenv("SENTRY_DSN", "http://u:u@example.com/123")
 
@@ -40,6 +42,8 @@ def test_monitor(monkeypatch: MonkeyPatch) -> None:
     with client:
         result = my_function(2, 3)
         assert result == 5
-        breakpoint()
 
-    assert len(transport.envelopes) == 1
+    assert snapshot == [
+        [json.loads(item) for item in e.serialize().splitlines()]
+        for e in transport.envelopes
+    ]
