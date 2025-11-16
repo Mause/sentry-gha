@@ -31,10 +31,13 @@
         'environment': 'environment',
         'event_id': '<redacted-id>',
         'monitor_config': dict({
+          'checkin_margin': 10.0,
+          'max_runtime': 5.0,
           'schedule': dict({
             'type': 'crontab',
             'value': '*/5 * * * *',
           }),
+          'timezone': 'Australia/Perth',
         }),
         'monitor_slug': 'sentry_gha-w4',
         'platform': 'python',
@@ -179,10 +182,13 @@
         'environment': 'environment',
         'event_id': '<redacted-id>',
         'monitor_config': dict({
+          'checkin_margin': 10.0,
+          'max_runtime': 5.0,
           'schedule': dict({
             'type': 'crontab',
             'value': '*/5 * * * *',
           }),
+          'timezone': 'Australia/Perth',
         }),
         'monitor_slug': 'sentry_gha-w4',
         'platform': 'python',

@@ -1,6 +1,7 @@
 import inspect
 import logging
 import os
+from datetime import timedelta
 from functools import wraps
 from typing import Callable
 
@@ -11,6 +12,7 @@ from ruamel.yaml import YAML
 from sentry_sdk.api import start_transaction
 from sentry_sdk.crons import monitor as _monitor
 from sentry_sdk.transport import Transport
+from sentry_sdk.types import MonitorConfig
 from sentry_sdk.utils import qualname_from_function
 
 logging.basicConfig(
@@ -70,20 +72,28 @@ def get_cron_schedule(workflow_name: str) -> str:
     return schedule
 
 
+FIVE_MINUTES = timedelta(minutes=5).total_seconds() / 60.0
+TEN_MINUTES = timedelta(minutes=10).total_seconds() / 60.0
+
+
 def monitor[F: Callable, R, **P](
     monitor_slug: str, workflow_name: str
 ) -> Callable[[F], F]:
     schedule = get_cron_schedule(workflow_name)
 
     def wrapper(func: F) -> F:
+        m: MonitorConfig = {
+            "schedule": {
+                "type": "crontab",
+                "value": schedule,
+            },
+            "max_runtime": FIVE_MINUTES,
+            "checkin_margin": TEN_MINUTES,
+            "timezone": "Australia/Perth",
+        }
         dec = _monitor(
             monitor_slug,
-            {
-                "schedule": {
-                    "type": "crontab",
-                    "value": schedule,
-                }
-            },
+            m,
         )
         function_name = qualname_from_function(func) or ""
 
