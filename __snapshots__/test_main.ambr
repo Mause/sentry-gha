@@ -34,8 +34,9 @@
           'checkin_margin': 10.0,
           'max_runtime': 5.0,
           'schedule': dict({
-            'type': 'crontab',
-            'value': '*/5 * * * *',
+            'type': 'interval',
+            'unit': 'seconds',
+            'value': 300,
           }),
           'timezone': 'Australia/Perth',
         }),
@@ -185,8 +186,9 @@
           'checkin_margin': 10.0,
           'max_runtime': 5.0,
           'schedule': dict({
-            'type': 'crontab',
-            'value': '*/5 * * * *',
+            'type': 'interval',
+            'unit': 'seconds',
+            'value': 300,
           }),
           'timezone': 'Australia/Perth',
         }),
