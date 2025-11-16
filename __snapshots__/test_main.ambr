@@ -3,33 +3,33 @@
   list([
     list([
       dict({
-        'event_id': 'event_id',
-        'sent_at': 'sent_at',
+        'event_id': '<redacted-id>',
+        'sent_at': '<redacted-timestamp>',
         'trace': dict({
           'environment': 'environment',
           'public_key': 'u',
           'release': 'release',
           'sample_rate': '1.0',
-          'trace_id': 'trace_id',
+          'trace_id': '<redacted-id>',
         }),
       }),
       dict({
         'content_type': 'application/json',
-        'length': 'length',
+        'length': 0,
         'type': 'check_in',
       }),
       dict({
-        'check_in_id': 'check_in_id',
+        'check_in_id': '<redacted-id>',
         'contexts': dict({
           'trace': dict({
             'parent_span_id': None,
-            'span_id': 'span_id',
-            'trace_id': 'trace_id',
+            'span_id': '<redacted-id>',
+            'trace_id': '<redacted-id>',
           }),
         }),
         'duration': 'duration',
         'environment': 'environment',
-        'event_id': 'event_id',
+        'event_id': '<redacted-id>',
         'monitor_config': dict({
           'schedule': dict({
             'type': 'crontab',
@@ -61,14 +61,14 @@
         }),
         'server_name': 'server_name',
         'status': 'in_progress',
-        'timestamp': 'timestamp',
+        'timestamp': '<redacted-timestamp>',
         'type': 'check_in',
       }),
     ]),
     list([
       dict({
-        'event_id': 'event_id',
-        'sent_at': 'sent_at',
+        'event_id': '<redacted-id>',
+        'sent_at': '<redacted-timestamp>',
         'trace': dict({
           'environment': 'environment',
           'public_key': 'u',
@@ -76,13 +76,13 @@
           'sample_rand': 'sample_rand',
           'sample_rate': '1.0',
           'sampled': 'true',
-          'trace_id': 'trace_id',
+          'trace_id': '<redacted-id>',
           'transaction': 'test_main.make_subject.<locals>.my_function',
         }),
       }),
       dict({
         'content_type': 'application/json',
-        'length': 'length',
+        'length': 0,
         'type': 'transaction',
       }),
       dict({
@@ -101,12 +101,12 @@
             'op': 'task',
             'origin': 'manual',
             'parent_span_id': None,
-            'span_id': 'span_id',
-            'trace_id': 'trace_id',
+            'span_id': '<redacted-id>',
+            'trace_id': '<redacted-id>',
           }),
         }),
         'environment': 'environment',
-        'event_id': 'event_id',
+        'event_id': '<redacted-id>',
         'extra': dict({
           'sys.argv': 'sys.argv',
         }),
@@ -137,11 +137,11 @@
         'server_name': 'server_name',
         'spans': list([
         ]),
-        'start_timestamp': 'start_timestamp',
+        'start_timestamp': '<redacted-timestamp>',
         'tags': dict({
           'GITHUB_REF_NAME': 'GITHUB_REF_NAME',
         }),
-        'timestamp': 'timestamp',
+        'timestamp': '<redacted-timestamp>',
         'transaction': 'test_main.make_subject.<locals>.my_function',
         'transaction_info': dict({
           'source': 'custom',
@@ -151,33 +151,33 @@
     ]),
     list([
       dict({
-        'event_id': 'event_id',
-        'sent_at': 'sent_at',
+        'event_id': '<redacted-id>',
+        'sent_at': '<redacted-timestamp>',
         'trace': dict({
           'environment': 'environment',
           'public_key': 'u',
           'release': 'release',
           'sample_rate': '1.0',
-          'trace_id': 'trace_id',
+          'trace_id': '<redacted-id>',
         }),
       }),
       dict({
         'content_type': 'application/json',
-        'length': 'length',
+        'length': 0,
         'type': 'check_in',
       }),
       dict({
-        'check_in_id': 'check_in_id',
+        'check_in_id': '<redacted-id>',
         'contexts': dict({
           'trace': dict({
             'parent_span_id': None,
-            'span_id': 'span_id',
-            'trace_id': 'trace_id',
+            'span_id': '<redacted-id>',
+            'trace_id': '<redacted-id>',
           }),
         }),
-        'duration': 'duration',
+        'duration': 0.0,
         'environment': 'environment',
-        'event_id': 'event_id',
+        'event_id': '<redacted-id>',
         'monitor_config': dict({
           'schedule': dict({
             'type': 'crontab',
@@ -209,7 +209,7 @@
         }),
         'server_name': 'server_name',
         'status': 'ok',
-        'timestamp': 'timestamp',
+        'timestamp': '<redacted-timestamp>',
         'type': 'check_in',
       }),
     ]),

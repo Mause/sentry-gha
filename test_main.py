@@ -56,27 +56,32 @@ def wipe(data: list | dict | str | int | None) -> list | dict | str | int | None
     elif isinstance(data, dict):
         new = {}
         for key, value in data.items():
-            if key in (
+            if key in {"timestamp", "sent_at", "start_timestamp"}:
+                new[key] = "<redacted-timestamp>"
+            elif key in {
                 "event_id",
                 "trace_id",
                 "check_in_id",
                 "span_id",
-                "timestamp",
-                "sent_at",
+            }:
+                new[key] = "<redacted-id>"
+            elif key in (
                 "duration",
                 "thread.id",
                 "server_name",
                 "sample_rand",
                 "environment",
                 "release",
-                "start_timestamp",
                 "length",
                 "build",
                 "sys.argv",
                 "version",
                 "GITHUB_REF_NAME",
             ):
-                new[key] = key
+                new[key] = {
+                    int: 0,
+                    float: 0.0,
+                }.get(type(value), key)
             else:
                 new[key] = wipe(value)
         return new
