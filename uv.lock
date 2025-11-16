@@ -236,6 +236,7 @@ dependencies = [
 dev = [
     { name = "pdbpp" },
     { name = "pytest" },
+    { name = "syrupy" },
 ]
 ruff = [
     { name = "ruff" },
@@ -253,6 +254,7 @@ requires-dist = [
 dev = [
     { name = "pdbpp", specifier = ">=0.11.7" },
     { name = "pytest", specifier = ">=9.0.1" },
+    { name = "syrupy", specifier = ">=4.9.1" },
 ]
 ruff = [
     { name = "ruff" },
@@ -270,6 +272,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/62/26/ff7d93a14a0ec309021dca2fb7c62669d4f6f5654aa1baf60797a16681e0/sentry_sdk-2.44.0.tar.gz", hash = "sha256:5b1fe54dfafa332e900b07dd8f4dfe35753b64e78e7d9b1655a28fd3065e2493", size = 371464, upload-time = "2025-11-11T09:35:56.075Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a8/56/c16bda4d53012c71fa1b588edde603c6b455bc8206bf6de7b83388fcce75/sentry_sdk-2.44.0-py2.py3-none-any.whl", hash = "sha256:9e36a0372b881e8f92fdbff4564764ce6cec4b7f25424d0a3a8d609c9e4651a7", size = 402352, upload-time = "2025-11-11T09:35:54.1Z" },
+]
+
+[[package]]
+name = "syrupy"
+version = "5.0.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pytest" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c1/90/1a442d21527009d4b40f37fe50b606ebb68a6407142c2b5cc508c34b696b/syrupy-5.0.0.tar.gz", hash = "sha256:3282fe963fa5d4d3e47231b16d1d4d0f4523705e8199eeb99a22a1bc9f5942f2", size = 48881, upload-time = "2025-09-28T21:15:12.783Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9d/9a/6c68aad2ccfce6e2eeebbf5bb709d0240592eb51ff142ec4c8fbf3c2460a/syrupy-5.0.0-py3-none-any.whl", hash = "sha256:c848e1a980ca52a28715cd2d2b4d434db424699c05653bd1158fb31cf56e9546", size = 49087, upload-time = "2025-09-28T21:15:11.639Z" },
 ]
 
 [[package]]
