@@ -106,6 +106,7 @@ def wipe(data: list | dict | str | int | None) -> list | dict | str | int | None
                 "build",
                 "sys.argv",
                 "version",
+                "abs_path",
                 "GITHUB_REF_NAME",
             ):
                 new[key] = {

@@ -125,7 +125,7 @@
               'stacktrace': dict({
                 'frames': list([
                   dict({
-                    'abs_path': '/data/data/com.termux/files/home/sentry-gha/src/sentry_gha/__init__.py',
+                    'abs_path': 'abs_path',
                     'context_line': '                    return func(*args, **kwargs)',
                     'filename': '__init__.py',
                     'function': 'sync_wrapper',
@@ -159,7 +159,7 @@
                     }),
                   }),
                   dict({
-                    'abs_path': '/data/data/com.termux/files/home/sentry-gha/test_main.py',
+                    'abs_path': 'abs_path',
                     'context_line': '            return x // y',
                     'filename': 'test_main.py',
                     'function': 'my_function',
