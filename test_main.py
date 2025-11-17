@@ -112,6 +112,7 @@ def wipe(data: list | dict | str | int | None) -> list | dict | str | int | None
                 new[key] = {
                     int: 0,
                     float: 0.0,
+                    list: [],
                 }.get(type(value), key)
             else:
                 new[key] = wipe(value)

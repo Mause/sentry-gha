@@ -193,7 +193,8 @@
           ]),
         }),
         'extra': dict({
-          'sys.argv': 'sys.argv',
+          'sys.argv': list([
+          ]),
         }),
         'level': 'error',
         'modules': dict({
@@ -299,7 +300,8 @@
         'environment': 'environment',
         'event_id': '<redacted-id>',
         'extra': dict({
-          'sys.argv': 'sys.argv',
+          'sys.argv': list([
+          ]),
         }),
         'measurements': dict({
         }),
@@ -521,7 +523,8 @@
         'environment': 'environment',
         'event_id': '<redacted-id>',
         'extra': dict({
-          'sys.argv': 'sys.argv',
+          'sys.argv': list([
+          ]),
         }),
         'measurements': dict({
         }),
