@@ -11,7 +11,7 @@ from cron_converter import Cron
 from rich.console import Console
 from rich.logging import RichHandler
 from ruamel.yaml import YAML
-from sentry_sdk.api import start_transaction
+from sentry_sdk.api import start_transaction, trace
 from sentry_sdk.crons import monitor as _monitor
 from sentry_sdk.transport import Transport
 from sentry_sdk.types import MonitorConfig
@@ -82,6 +82,7 @@ def get_cron_schedule(workflow_name: str) -> str:
 
 FIVE_MINUTES = timedelta(minutes=5).total_seconds() / 60.0
 TEN_MINUTES = timedelta(minutes=10).total_seconds() / 60.0
+OPERATION = "function"
 
 
 def monitor[F: Callable, R, **P](
@@ -109,10 +110,10 @@ def monitor[F: Callable, R, **P](
         @wraps(func)
         async def async_wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
             with start_transaction(
-                op="task",
+                op=OPERATION,
                 name=function_name,
             ):
-                return await func(*args, **kwargs)
+                return await trace(func)(*args, **kwargs)
 
         try:
             async_wrapper.__signature__ = inspect.signature(func)  # type: ignore[attr-defined]
@@ -123,10 +124,10 @@ def monitor[F: Callable, R, **P](
         @wraps(func)
         def sync_wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
             with start_transaction(
-                op="task",
+                op=OPERATION,
                 name=function_name,
             ):
-                return func(*args, **kwargs)
+                return trace(func)(*args, **kwargs)
 
         try:
             sync_wrapper.__signature__ = inspect.signature(func)  # type: ignore[attr-defined]
