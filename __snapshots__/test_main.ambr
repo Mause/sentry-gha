@@ -152,7 +152,7 @@
                         '0',
                       ]),
                       'e': "ZeroDivisionError('integer division or modulo by zero')",
-                      'func': '<function make_subject.<locals>.my_function at 0x705fd8fb00>',
+                      'func': 'func',
                       'function_name': "'test_main.make_subject.<locals>.my_function'",
                       'kwargs': dict({
                       }),
