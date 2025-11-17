@@ -86,6 +86,170 @@
       dict({
         'content_type': 'application/json',
         'length': 0,
+        'type': 'event',
+      }),
+      dict({
+        'breadcrumbs': dict({
+          'values': list([
+          ]),
+        }),
+        'contexts': dict({
+          'runtime': dict({
+            'build': 'build',
+            'name': 'CPython',
+            'version': 'version',
+          }),
+          'trace': dict({
+            'data': dict({
+              'thread.id': 'thread.id',
+              'thread.name': 'MainThread',
+            }),
+            'description': None,
+            'op': 'function',
+            'origin': 'manual',
+            'parent_span_id': '<redacted-id>',
+            'span_id': '<redacted-id>',
+            'trace_id': '<redacted-id>',
+          }),
+        }),
+        'environment': 'environment',
+        'event_id': '<redacted-id>',
+        'exception': dict({
+          'values': list([
+            dict({
+              'mechanism': dict({
+                'handled': True,
+                'type': 'generic',
+              }),
+              'module': None,
+              'stacktrace': dict({
+                'frames': list([
+                  dict({
+                    'abs_path': 'abs_path',
+                    'context_line': '                    return func(*args, **kwargs)',
+                    'filename': '__init__.py',
+                    'function': 'sync_wrapper',
+                    'in_app': True,
+                    'lineno': 135,
+                    'module': 'sentry_gha',
+                    'post_context': list([
+                      '                except Exception as e:',
+                      '                    capture_exception(e)',
+                      '                    raise',
+                      '',
+                      '        try:',
+                    ]),
+                    'pre_context': list([
+                      '            with start_transaction(',
+                      '                op=OPERATION,',
+                      '                name=function_name,',
+                      '            ):',
+                      '                try:',
+                    ]),
+                    'vars': dict({
+                      'args': list([
+                        '4',
+                        '0',
+                      ]),
+                      'e': "ZeroDivisionError('integer division or modulo by zero')",
+                      'func': 'func',
+                      'function_name': "'test_main.make_subject.<locals>.my_function'",
+                      'kwargs': dict({
+                      }),
+                    }),
+                  }),
+                  dict({
+                    'abs_path': 'abs_path',
+                    'context_line': '            return x // y',
+                    'filename': 'test_main.py',
+                    'function': 'my_function',
+                    'in_app': True,
+                    'lineno': 29,
+                    'module': 'test_main',
+                    'post_context': list([
+                      '',
+                      '    return my_function',
+                      '',
+                      '',
+                      'class DummyTransport(Transport):',
+                    ]),
+                    'pre_context': list([
+                      '',
+                      '    with patch("builtins.open", return_value=fh):',
+                      '',
+                      '        @monitor("sentry_gha-w4", "python-app")',
+                      '        def my_function(x: int, y: int) -> int:',
+                    ]),
+                    'vars': dict({
+                      'x': '4',
+                      'y': '0',
+                    }),
+                  }),
+                ]),
+              }),
+              'type': 'ZeroDivisionError',
+              'value': 'integer division or modulo by zero',
+            }),
+          ]),
+        }),
+        'extra': dict({
+          'sys.argv': list([
+          ]),
+        }),
+        'level': 'error',
+        'modules': dict({
+        }),
+        'platform': 'python',
+        'release': 'release',
+        'sdk': dict({
+          'integrations': list([
+            'argv',
+            'atexit',
+            'dedupe',
+            'excepthook',
+            'logging',
+            'modules',
+            'stdlib',
+            'threading',
+          ]),
+          'name': 'sentry.python',
+          'packages': list([
+            dict({
+              'name': 'pypi:sentry-sdk',
+              'version': 'version',
+            }),
+          ]),
+          'version': 'version',
+        }),
+        'server_name': 'server_name',
+        'tags': dict({
+          'GITHUB_REF_NAME': 'GITHUB_REF_NAME',
+        }),
+        'timestamp': '<redacted-timestamp>',
+        'transaction': 'test_main.make_subject.<locals>.my_function',
+        'transaction_info': dict({
+          'source': 'custom',
+        }),
+      }),
+    ]),
+    list([
+      dict({
+        'event_id': '<redacted-id>',
+        'sent_at': '<redacted-timestamp>',
+        'trace': dict({
+          'environment': 'environment',
+          'public_key': 'u',
+          'release': 'release',
+          'sample_rand': 'sample_rand',
+          'sample_rate': '1.0',
+          'sampled': 'true',
+          'trace_id': '<redacted-id>',
+          'transaction': 'test_main.make_subject.<locals>.my_function',
+        }),
+      }),
+      dict({
+        'content_type': 'application/json',
+        'length': 0,
         'type': 'transaction',
       }),
       dict({
@@ -112,7 +276,8 @@
         'environment': 'environment',
         'event_id': '<redacted-id>',
         'extra': dict({
-          'sys.argv': 'sys.argv',
+          'sys.argv': list([
+          ]),
         }),
         'measurements': dict({
         }),
@@ -140,24 +305,6 @@
         }),
         'server_name': 'server_name',
         'spans': list([
-          dict({
-            'data': dict({
-              'thread.id': 'thread.id',
-              'thread.name': 'MainThread',
-            }),
-            'description': 'test_main.make_subject.<locals>.my_function',
-            'op': 'function',
-            'origin': 'manual',
-            'parent_span_id': '<redacted-id>',
-            'same_process_as_parent': True,
-            'span_id': '<redacted-id>',
-            'start_timestamp': '<redacted-timestamp>',
-            'tags': dict({
-              'status': 'internal_error',
-            }),
-            'timestamp': '<redacted-timestamp>',
-            'trace_id': '<redacted-id>',
-          }),
         ]),
         'start_timestamp': '<redacted-timestamp>',
         'tags': dict({
@@ -352,7 +499,8 @@
         'environment': 'environment',
         'event_id': '<redacted-id>',
         'extra': dict({
-          'sys.argv': 'sys.argv',
+          'sys.argv': list([
+          ]),
         }),
         'measurements': dict({
         }),
@@ -380,21 +528,6 @@
         }),
         'server_name': 'server_name',
         'spans': list([
-          dict({
-            'data': dict({
-              'thread.id': 'thread.id',
-              'thread.name': 'MainThread',
-            }),
-            'description': 'test_main.make_subject.<locals>.my_function',
-            'op': 'function',
-            'origin': 'manual',
-            'parent_span_id': '<redacted-id>',
-            'same_process_as_parent': True,
-            'span_id': '<redacted-id>',
-            'start_timestamp': '<redacted-timestamp>',
-            'timestamp': '<redacted-timestamp>',
-            'trace_id': '<redacted-id>',
-          }),
         ]),
         'start_timestamp': '<redacted-timestamp>',
         'tags': dict({
