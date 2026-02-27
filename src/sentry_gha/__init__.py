@@ -65,7 +65,7 @@ def init(spotlight: bool = False, transport: Transport | None = None) -> None:
     )
 
 
-def get_cron_schedule(workflow_name: str) -> str:
+def get_cron_schedule(workflow_name: str) -> timedelta:
     with open(f".github/workflows/{workflow_name}.yml") as fh:
         action = YAML().load(fh)
 
@@ -77,7 +77,10 @@ def get_cron_schedule(workflow_name: str) -> str:
     if minute.has(0):
         warnings.warn(f"GitHub recommends that jobs not run on the hour: {schedule}")
 
-    return schedule
+    sched = parsed.schedule()
+    a = parsed.next()
+    b = parsed.next()
+    return b - a
 
 
 FIVE_MINUTES = timedelta(minutes=5).total_seconds() / 60.0
@@ -93,8 +96,9 @@ def monitor[F: Callable, R, **P](
     def wrapper(func: F) -> F:
         m: MonitorConfig = {
             "schedule": {
-                "type": "crontab",
-                "value": schedule,
+                "type": "interval",
+                "unit": "seconds",
+                "value": int(schedule.total_seconds()),
             },
             "max_runtime": FIVE_MINUTES,
             "checkin_margin": TEN_MINUTES,
