@@ -106,11 +106,16 @@ def wipe(data: list | dict | str | int | None) -> list | dict | str | int | None
                 "build",
                 "sys.argv",
                 "version",
+                "abs_path",
+                "modules",
+                "func",
                 "GITHUB_REF_NAME",
             ):
                 new[key] = {
                     int: 0,
                     float: 0.0,
+                    list: [],
+                    dict: {},
                 }.get(type(value), key)
             else:
                 new[key] = wipe(value)
